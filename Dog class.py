@@ -21,9 +21,21 @@ class Dog:
 
     def sleep(self):
         print(self.name + " is sleeping...")
-        
+
 
 my_dog = Dog('Sweetie', 6)
+your_dog = Dog('Bark', 4)
+
+class Human:
+    def __init__(self, name):
+        self.name = name
+    def run(self):
+        print(self.name + " is running after her dog " + your_dog.name.title()+"!")
+        
+
+human = Human('Haley')
+
+human.run()
 
 my_dog.run()
 sleep(0.5)
