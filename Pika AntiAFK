@@ -1,0 +1,35 @@
+import pyautogui
+import time
+import keyboard
+
+
+# coordinates ----> 9 rows 3 columns
+x_coords = [739, 794, 852, 907, 965, 1014, 1067, 1119, 1170]
+y_coords = [357, 417, 463]
+
+w, h = pyautogui.size()
+print(pyautogui.size())
+
+x_val = 700  # x coord
+y_val = 282  # y coord
+width = 1173  # width
+height = 300  # height
+
+while True:
+    if pyautogui.locateOnScreen('imgs/afk.png', confidence=0.8, grayscale=True):
+        print('AntiAFK Detected.')
+        for y in y_coords:
+            for x in x_coords:
+                if x < x_val or x > x_val + width or y < y_val or y > y_val + height:
+                    continue  # Skip coordinates that are outside of values
+
+                pyautogui.moveTo(x, y)
+                time.sleep(0.01)
+                if pyautogui.locateOnScreen('imgs/Confirm.png', grayscale=True, confidence=0.7, region=(x_val, y_val, width, height)):
+                    print('Success')
+                    pyautogui.click()
+                    break
+            else:
+                continue
+            break
+
